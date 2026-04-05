@@ -1,6 +1,7 @@
 import express from 'express';
 import User from '../models/User.js';
 import { protect, adminOnly } from '../middleware/auth.js';
+import bcrypt from 'bcryptjs';
 
 const router = express.Router();
 
@@ -87,7 +88,8 @@ router.put('/:id', protect, adminOnly, async (req, res) => {
 
         // Only update password if provided
         if (password && password.trim() !== '') {
-            updateData.password = password;
+            const salt = await bcrypt.genSalt(10);
+            updateData.password = await bcrypt.hash(password, salt);
         }
 
         user = await User.findByIdAndUpdate(
