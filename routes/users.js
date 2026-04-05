@@ -75,7 +75,7 @@ router.post('/', protect, adminOnly, async (req, res) => {
 // @access  Private/Admin
 router.put('/:id', protect, adminOnly, async (req, res) => {
     try {
-        const { name, email, role, isActive } = req.body;
+        const { name, email, role, isActive, password } = req.body;
 
         let user = await User.findById(req.params.id);
 
@@ -83,9 +83,16 @@ router.put('/:id', protect, adminOnly, async (req, res) => {
             return res.status(404).json({ message: 'User not found' });
         }
 
+        const updateData: any = { name, email, role, isActive };
+
+        // Only update password if provided
+        if (password && password.trim() !== '') {
+            updateData.password = password;
+        }
+
         user = await User.findByIdAndUpdate(
             req.params.id,
-            { name, email, role, isActive },
+            updateData,
             { new: true, runValidators: true }
         ).select('-password');
 
