@@ -83,7 +83,7 @@ router.put('/:id', protect, adminOnly, async (req, res) => {
             return res.status(404).json({ message: 'User not found' });
         }
 
-        const updateData: any = { name, email, role, isActive };
+        const updateData = { name, email, role, isActive };
 
         // Only update password if provided
         if (password && password.trim() !== '') {
