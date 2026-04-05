@@ -35,6 +35,11 @@ const articleSchema = new mongoose.Schema({
     tags: [{
         type: String
     }],
+    hashtags: [{
+        type: String,
+        lowercase: true,
+        trim: true
+    }],
     isBreaking: {
         type: Boolean,
         default: false,
