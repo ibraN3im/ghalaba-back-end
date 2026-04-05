@@ -28,7 +28,7 @@ app.use(express.urlencoded({ extended: true }));
 app.get('/', (req, res) => {
     res.json({
         status: 'OK',
-        message: 'Galaba News API',
+        message: 'Ghalaba News API',
         version: '1.0.0',
         endpoints: {
             health: '/api/health',
@@ -52,7 +52,7 @@ app.use('/api/stats', statsRoutes);
 
 // Health check route
 app.get('/api/health', (req, res) => {
-    res.json({ status: 'OK', message: 'Galaba API is running' });
+    res.json({ status: 'OK', message: 'Ghalaba API is running' });
 });
 
 // Error handling middleware
