@@ -15,11 +15,11 @@ router.get('/', async (req, res) => {
         // If no settings exist, create default ones
         if (!settings) {
             settings = new Settings({
-                siteName: { ar: 'الغلابه', en: 'Al-Ghalaba' },
-                contactEmail: 'info@alghalaba.com',
+                siteName: { ar: 'الغلابه', en: 'Ghalaba' },
+                contactEmail: 'ghalaba@gmail.com',
                 description: {
-                    ar: 'موقع أخباري شامل',
-                    en: 'Comprehensive news website'
+                    ar: 'جريدة إلكترونية شاملة تقدم آخر الأخبار والتحليلات من مختلف المجالات',
+                    en: 'A comprehensive digital newspaper that provides the latest news and analyses from various fields'
                 }
             });
             await settings.save();
