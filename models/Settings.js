@@ -5,10 +5,6 @@ const settingsSchema = new mongoose.Schema({
         ar: { type: String, required: true },
         en: { type: String, required: true }
     },
-    logo: {
-        type: String,
-        default: '/logo.png'
-    },
     contactEmail: {
         type: String,
         required: true
@@ -20,9 +16,7 @@ const settingsSchema = new mongoose.Schema({
     socialLinks: {
         facebook: { type: String, default: '' },
         twitter: { type: String, default: '' },
-        instagram: { type: String, default: '' },
-        youtube: { type: String, default: '' },
-        linkedin: { type: String, default: '' }
+        youtube: { type: String, default: '' }
     },
     tickerSpeed: {
         type: Number,
